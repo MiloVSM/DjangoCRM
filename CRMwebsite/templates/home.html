@@ -6,7 +6,21 @@
 
 {% if user.is_authenticated %}
 
-<h1>Hello World</h1>
+<h1>Clientes:</h1>
+{%if clientes %}
+  {% for cliente in clientes %}
+    {{ cliente.id }}
+    {{ cliente }}
+    {{ cliente.email }}
+    {{ cliente.phone }}
+    {{ cliente.address }}
+    {{ cliente.city }}
+    {{ cliente.state }}
+    {{ cliente.cep }}
+    {{ cliente.created_at }}
+    <br/>
+  {% endfor %}
+{% endif %}
 
 {% else %}
 
