@@ -47,3 +47,12 @@ def register_user(request):
         return render(request, 'register.html', {'form':form})
         
     return render(request, 'register.html', {'form':form})
+
+def customer_record(request, pk):
+    if request.user.is_authenticated:
+        # Exibe o cadastro
+        customer_record = Cliente.objects.get(id=pk)
+        return render(request, 'record.html', {'customer_record':customer_record})
+    else:
+        messages.success(request, "Você precisa estar logado para acessar a página de cadastros!")
+        return redirect('home')
